@@ -14,6 +14,11 @@ def getqueuevalues():
     values = queueutil.getvalues(numvalues)
     return jsonify(values)
 
+@app.route('/putvalues',methods=('get', 'post'))
+def putqueuevalues():
+    queueutil.populatequeue(1000)
+    return jsonify({"current_size_is": queueutil.mqueue.size})
+
 
 
 def create_app(database_uri=None, debug=False):
